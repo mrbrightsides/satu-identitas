@@ -1,0 +1,12 @@
+> rest-express@1.0.0 dev
+8:56:59 PM [express] serving on port 5000s
+⚠️  Pinata JWT not configured, skipping IPFS upload
+9:01:01 PM [express] POST /api/identities 201 in 58ms :: {"id":7,"idType":"NIK","idNumber":"1671030102880007","fullName":"Akhmad Khudri","did":"did:elpeef:citizen:910aac22ad626208003fb196d8eead4a","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:01:01.174Z"}
+9:01:30 PM [express] GET /api/identities/did:elpeef:citizen:910aac22ad626208003fb196d8eead4a 200 in 12ms :: {"id":7,"idType":"NIK","idNumber":"1671030102880007","fullName":"Akhmad Khudri","did":"did:elpeef:citizen:910aac22ad626208003fb196d8eead4a","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:01:01.174Z"}
+9:04:37 PM [express] GET /api/identities/did:elpeef:citizen:910aac22ad626208003fb196d8eead4a 404 in 10ms :: {"message":"Identity not found"}
+⚠️  Pinata JWT not configured, skipping IPFS upload
+9:05:00 PM [express] POST /api/identities 201 in 18ms :: {"id":8,"idType":"NIK","idNumber":"1671030102880007","fullName":"Akhmad Khudri","did":"did:elpeef:citizen:493ebc77c570efbb1f4a3820655605ea","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:05:00.940Z"}
+9:05:15 PM [express] GET /api/identities/did:elpeef:citizen:493ebc77c570efbb1f4a3820655605ea 200 in 11ms :: {"id":8,"idType":"NIK","idNumber":"1671030102880007","fullName":"Akhmad Khudri","did":"did:elpeef:citizen:493ebc77c570efbb1f4a3820655605ea","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:05:00.940Z"}
+⚠️  Pinata JWT not configured, skipping IPFS upload
+9:05:51 PM [express] POST /api/identities 201 in 18ms :: {"id":9,"idType":"NIK","idNumber":"1671030102880006","fullName":"John","did":"did:elpeef:citizen:da706ae265125907087bb0c3b87840dc","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:05:51.263Z"}
+9:06:16 PM [express] GET /api/identities/did:elpeef:citizen:da706ae265125907087bb0c3b87840dc 200 in 10ms :: {"id":9,"idType":"NIK","idNumber":"1671030102880006","fullName":"John","did":"did:elpeef:citizen:da706ae265125907087bb0c3b87840dc","txHash":null,"ipfsHash":null,"status":"pending","createdAt":"2026-03-14T21:05:51.263Z"}
