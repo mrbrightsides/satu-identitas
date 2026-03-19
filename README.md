@@ -1,8 +1,27 @@
 # SatuIdentitas 🇮🇩
 
-**Decentralized Identity (DID) Platform for Indonesia**
+## A Blockchain-Based National Identity & Immigration Compliance System
 
-SatuIdentitas is a full-stack Web3 application that replaces physical KTP/NIK identity documents with blockchain-anchored Decentralized Identifiers (DIDs).
+SatuIdentitas is a full-stack Web3 platform that replaces fragmented identity verification (KTP, passport, visa checks) with a single decentralized identity layer powered by DID, IPFS, and Ethereum.
+
+It not only issues identities — it continuously monitors compliance in real-time.
+
+## Why This Matters
+
+Today, identity verification is fragmented:
+
+- Citizens rely on physical KTP and repeated verification
+- Foreign visitors face complex visa and compliance processes
+- Institutions cannot easily share trusted identity data
+
+SatuIdentitas solves this by introducing:
+
+- A unified identity layer for citizens and visitors
+- Privacy-preserving verification using cryptographic hashing
+- Real-time compliance monitoring (e.g., visa overstay detection)
+- Public verifiability via blockchain and IPFS
+
+This transforms identity from static documents into a living, verifiable system.
 
 ---
 
@@ -148,6 +167,16 @@ Two modes on every DID detail page:
 └──────────────────────┘
 ```
 
+### Architecture Summary
+
+SatuIdentitas is built as a layered trust system:
+
+1. Identity Layer — DID generation (citizen & visitor)
+2. Credential Layer — Verifiable credentials stored on IPFS
+3. Trust Layer — Blockchain anchoring via Ethereum Sepolia
+4. Audit Layer — Activity and compliance tracking (AudiTour)
+5. Intelligence Layer — Fraud detection & overstay monitoring
+
 ---
 
 ## Tech Stack
@@ -202,7 +231,7 @@ idHash = SHA-256(NIK)  →  stored on-chain
 NIK                    →  never leaves the user's device
 ```
 
-This means even if someone reads every transaction on the Sepolia blockchain, they cannot recover the original NIK from the hash — protecting citizens from identity scraping and data harvesting on a public ledger.
+This means even if someone reads every transaction on the Sepolia blockchain, they cannot recover the original NIK from the hash — protecting citizens from identity scraping and data harvesting on a public ledger. This also ensures public verifiability without data exposure
 
 The same principle applies to visitors: `SHA-256(passportNumber)` is used, not the raw passport number.
 
@@ -368,9 +397,11 @@ npm start
 
 ---
 
-## Overstay Detection System
+## Overstay Detection System (Core Innovation)
 
-The overstay detection system enforces visa compliance automatically without any manual intervention.
+Unlike traditional identity systems, SatuIdentitas actively monitors compliance.
+
+It transforms identity from a static record into a real-time enforcement system.
 
 ### How It Works
 
