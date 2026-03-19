@@ -191,6 +191,33 @@ Key behaviors:
 
 ---
 
+## Security & Privacy Design
+
+### 🔒 Privacy-Preserving Identity (Zero-Knowledge Principle)
+
+The actual NIK (National ID number) is **never published to the blockchain**. Instead, the system computes a SHA-256 hash of the NIK on the client side and sends only that hash (`idHash`) to the smart contract:
+
+```
+idHash = SHA-256(NIK)  →  stored on-chain
+NIK                    →  never leaves the user's device
+```
+
+This means even if someone reads every transaction on the Sepolia blockchain, they cannot recover the original NIK from the hash — protecting citizens from identity scraping and data harvesting on a public ledger.
+
+The same principle applies to visitors: `SHA-256(passportNumber)` is used, not the raw passport number.
+
+### 🔐 Tamper-Proof Registration (Immutability)
+
+Once a DID is registered, the `"Registered"` status is **permanently recorded on the Sepolia blockchain** and cannot be altered — not by the platform, not by a database administrator, not by anyone. The smart contract enforces this with an on-chain revert:
+
+```solidity
+require(!identities[_did].exists, "DID already registered");
+```
+
+Any verifier — a bank, employer, or government agency — can independently confirm a DID's status by querying the contract directly on [Etherscan](https://sepolia.etherscan.io) without relying on SatuIdentitas infrastructure at all. The database (`tx_hash` column) serves only as a convenience index; the ground truth always lives on-chain.
+
+---
+
 ## DID Format
 
 ```
