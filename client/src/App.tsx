@@ -16,6 +16,7 @@ import Verify from "./pages/Verify";
 import Dashboard from "./pages/Dashboard";
 import VerifyQR from "./pages/VerifyQR";
 import OverstayMonitor from "./pages/OverstayMonitor";
+import About from "./pages/About";
 import NotFound from "./pages/not-found";
 
 function Router() {
@@ -30,6 +31,7 @@ function Router() {
           <Route path="/verify" component={Verify} />
           <Route path="/verify-qr" component={VerifyQR} />
           <Route path="/overstay-monitor" component={OverstayMonitor} />
+          <Route path="/about" component={About} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/did/:did" component={IdentityDetail} />
           <Route component={NotFound} />
