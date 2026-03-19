@@ -26,6 +26,10 @@ Decentralized Identity (DID) platform for Indonesia. Replaces physical KTP/NIK w
 - `DIDRegistry.sol` — On-chain DID Registry contract source
 - `script/DIDSoulboundToken.sol` — ERC-5114 SBT reference contract
 
+## Security & Privacy Design
+- **Privacy (Zero-Knowledge Principle)**: NIK is hashed with SHA-256 on the client before being sent to the smart contract. The raw NIK never touches the blockchain — only `SHA-256(NIK)` is stored on-chain. This prevents identity scraping from public ledger data.
+- **Immutability**: Smart contract reverts with `"DID already registered"` if a DID is re-submitted. Once registered, the status cannot be changed by any party — verified independently via Etherscan. The DB `tx_hash` column is a convenience index; on-chain state is the source of truth.
+
 ## Deployed Contract
 - **Network**: Sepolia testnet
 - **Address**: `0xc0B12ACf49BA12655ae561f102FF8d22D2d9902C`
