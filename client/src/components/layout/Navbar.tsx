@@ -15,6 +15,7 @@ export function Navbar() {
     { name: "Verify Identity", path: "/verify" },
     { name: "Verify QR", path: "/verify-qr" },
     { name: "Overstay Monitor", path: "/overstay-monitor" },
+    { name: "About", path: "/about" },
   ];
 
   return (
