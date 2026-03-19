@@ -20,7 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { useCreateIdentity } from "@/hooks/use-identities";
+import { useCreateIdentity, useUpdateTxHash } from "@/hooks/use-identities";
 import { useBlockchain } from "@/hooks/use-blockchain";
 
 // Client-side schema mirroring the backend for form validation
@@ -41,6 +41,7 @@ export default function Register() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const createIdentity = useCreateIdentity();
+  const updateTxHash = useUpdateTxHash();
   const blockchain = useBlockchain();
   const [isRegistering, setIsRegistering] = useState(false);
 
@@ -66,11 +67,14 @@ export default function Register() {
       
       // Automatically register on blockchain
       try {
-        await blockchain.registerDIDOnBlockchain(result.did, data.idNumber);
+        const txHash = await blockchain.registerDIDOnBlockchain(result.did, data.idNumber);
+        
+        // Save the transaction hash to the database
+        await updateTxHash.mutateAsync({ did: result.did, txHash });
         
         toast({
           title: "Success!",
-          description: "Your DID is now verified on Sepolia.",
+          description: "Your DID is now anchored on Sepolia and saved.",
         });
       } catch (blockchainError: any) {
         // Still navigate even if blockchain registration fails - user can retry from detail page
